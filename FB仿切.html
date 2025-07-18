@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Facebook</title>
+    <style>
+        body {
+            margin: 0;
+            height: 3000px;
+        }
+
+        #nav {
+            background-color: black;
+            width: 100%;
+            height: 56px;
+            /* 固定定位 => 已body為準定位 */
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 9;
+        }
+
+        #nav-left {
+            /* background-color: blue; */
+            width: 25%;
+            height: calc(56px - 16px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 8px;
+        }
+
+        #fb {
+            background-image: url(./img_0321/fb.svg);
+            width: 40px;
+            height: 40px;
+            float: left;
+        }
+
+        #search {
+            background-color: rgb(48, 48, 48);
+            width: 280px;
+            height: 38px;
+
+            border-radius: 30px;
+            position: absolute;
+            left: 60px;
+        }
+
+        #search-img {
+            background-image: url(./img_0321/search.svg);
+            width: 18px;
+            height: 18px;
+            background-size: cover;
+            position: absolute;
+            top: calc((40px - 20px)/2);
+            left: 13px;
+        }
+
+        #search-text {
+            /* background-color: aquamarine; */
+            /* width: 200px; */
+            /* height: 30px;1 */
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translate(0, -50%);
+            /* line-height: 40px; */
+            color: rgb(172, 172, 172);
+            font-size: 17px;
+            /* font-weight: bold; */
+            /* 文字對齊 */
+            /* text-align: start; */
+        }
+
+        #nav-mid {
+            /* background-color: rgb(96, 96, 123); */
+            width: 40%;
+            height: 56px;
+            position: absolute;
+            top: 0;
+            left: 30%;
+        }
+
+        #home {
+            background-image: url(./img_0321/home.svg);
+            width: 20%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: center;
+            float: left;
+        }
+
+        #friend {
+            background-image: url(./img_0321/friend.svg);
+            width: 20%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: center;
+            float: left;
+        }
+
+        #video {
+            background-image: url(./img_0321/video.svg);
+            width: 20%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: center;
+            float: left;
+        }
+
+        #market {
+            background-image: url(./img_0321/market.svg);
+            width: 20%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 30px;
+            background-position: center;
+            float: left;
+        }
+
+        #club {
+            background-image: url(./img_0321/club.svg);
+            width: 20%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: 31px;
+            background-position: center;
+            float: left;
+        }
+
+
+        #nav-right {
+            /* background-color: rgb(179, 179, 228); */
+            width: 15%;
+            height: 56px;
+            position: absolute;
+            top: 0;
+            left: 85%;
+        }
+
+        #right-icon-1 {
+            background-color: rgb(92, 92, 92);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: absolute;
+            left: 0px;
+            top: 7px;
+        }
+
+        #menu {
+            background-image: url(./img_0321/menu.svg);
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: center;
+
+        }
+
+        #right-icon-2 {
+            background-color: rgb(92, 92, 92);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: absolute;
+            left: 52px;
+            top: 7px;
+        }
+
+        #messenger {
+            background-image: url(./img_0321/messenger.svg);
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            background-position: center;
+        }
+
+        #right-icon-3 {
+            background-color: rgb(92, 92, 92);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: absolute;
+            left: 104px;
+            top: 7px;
+        }
+
+        #notify {
+            background-image: url(./img_0321/notify.svg);
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            background-repeat: no-repeat;
+            background-size: 22px;
+            background-position: center;
+        }
+
+        #right-icon-4 {
+            background-image: url(./img_0321/avatar.jfif);
+            /* background-color: grey; */
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            margin-right: 10px;
+            position: absolute;
+            left: 156px;
+            top: 7px;
+
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #avatar-more {
+            background-image: url(./img_0321/down.png);
+            width: 25%;
+            height: 100%;
+            margin: auto;
+            background-repeat: no-repeat;
+            background-size: 18px;
+            background-position: center;
+
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        #all-1 {
+            /* background-color: grey; */
+            width: 100%;
+            height: 520px;
+            margin-top: 56px;
+            background: linear-gradient(to top, rgb(39, 39, 39), rgb(231, 231, 231));
+            position: relative;
+
+        }
+
+        #banner {
+            /* background-color: white; */
+            width: 70%;
+            height: 300px;
+            margin: auto;
+            background-image: url(./img_0321/back1.png);
+            /* background-repeat: no-repeat; */
+            background-position: center;
+            background-size: cover;
+            position: relative;
+
+        }
+
+        #edit-photo {
+            background-color: rgb(239, 239, 239);
+            color: rgb(32, 32, 32);
+            font-size: 18px;
+            font-weight: bold;
+            text-indent: 36px;
+            line-height: 36px;
+            border-radius: 10px;
+
+            position: absolute;
+            right: 15px;
+            bottom: 5%;
+            height: 35px;
+            width: 157px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        #edit-photo-img {
+            background-image: url(./img_0321/many.png);
+            width: 20px;
+            height: 20px;
+            background-size: cover;
+            background-position: 0px -18px;
+
+            position: absolute;
+            right: 152px;
+            bottom: calc(5% + 10px);
+        }
+
+        #avatar {
+            background-image: url(./img_0321/avatar.jfif);
+            position: absolute;
+            bottom: -140px;
+            left: 90px;
+            height: calc(168px - 6px);
+            width: calc(168px - 6px);
+            /* 變圓形 */
+            border-radius: 50%;
+            /* 圖片自動覆蓋全部範圍 */
+            background-size: cover;
+            border: 4px solid rgb(55, 55, 55);
+        }
+
+        #name {
+            /* background-color: red; */
+            color: white;
+            width: 200px;
+            height: 50px;
+            font-size: 36px;
+            font-weight: bold;
+            font-family: "Lato", sans-serif;
+            /* letter-spacing: 10px; */
+            text-align: left;
+
+            position: absolute;
+            left: 120%;
+            top: 20%;
+        }
+
+        #follower-num {
+            /* background-color: rgb(235, 178, 178); */
+            color: rgb(216, 216, 216);
+            width: 200px;
+            height: 30px;
+            font-size: 20px;
+            font-weight: 500;
+            /* font-family: "標楷體"; */
+            position: absolute;
+            left: 120%;
+            top: calc(20% + 45px);
+        }
+
+        #avatar-camera {
+            background-color: rgb(98, 98, 98);
+            /* background-image: url(./img_0321/avatar.jfif); */
+            position: absolute;
+            bottom: 8px;
+            right: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            /* 圖片自動覆蓋全部範圍 */
+            /* background-size: cover; */
+            /* border: 3px solid; */
+        }
+
+        #avatar-camera-photo {
+            /* background-color: red; */
+            background-image: url(./img_0321/many.png);
+            background-position: 1px -20px;
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+
+            margin: auto;
+            margin-top: 9px;
+            /* 濾鏡 */
+            filter: invert();
+        }
+
+        #friend-6 {
+            /* background-color: rgb(229, 40, 40); */
+            background-image: url(./img_0321/head5.jfif);
+            position: absolute;
+            bottom: 0;
+            right: -70px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid rgb(50, 50, 50);
+            /* 圖片自動覆蓋全部範圍 */
+            background-size: cover;
+            /* border: 3px solid; */
+        }
+
+        #friend-etc {
+            background-color: rgba(41, 41, 41, 0.441);
+            color: rgb(159, 159, 159);
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 24px;
+
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+        }
+
+        #friend-5 {
+            /* background-color: rgb(229, 40, 40); */
+            background-image: url(./img_0321/head6.png);
+            position: absolute;
+            bottom: 0;
+            right: -102px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid rgb(50, 50, 50);
+            /* 圖片自動覆蓋全部範圍 */
+            background-size: cover;
+            /* border: 3px solid; */
+        }
+
+        #friend-4 {
+            /* background-color: rgb(229, 40, 40); */
+            background-image: url(./img_0321/head3.jfif);
+            position: absolute;
+            bottom: 0;
+            right: -134px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid rgb(50, 50, 50);
+            /* 圖片自動覆蓋全部範圍 */
+            background-size: cover;
+            /* border: 3px solid; */
+        }
+
+        #friend-3 {
+            /* background-color: rgb(229, 40, 40); */
+            background-image: url(./img_0321/head2.jpg);
+            position: absolute;
+            bottom: 0;
+            right: -166px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid rgb(50, 50, 50);
+            /* 圖片自動覆蓋全部範圍 */
+            background-size: cover;
+            /* border: 3px solid; */
+        }
+
+        #friend-2 {
+            /* background-color: rgb(229, 40, 40); */
+            background-image: url(./img_0321/head1.jpg);
+            position: absolute;
+            bottom: 0;
+            right: -198px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid rgb(50, 50, 50);
+            /* 圖片自動覆蓋全部範圍 */
+            background-size: cover;
+            /* border: 3px solid; */
+        }
+
+        #friend-1 {
+            /* background-color: rgb(229, 40, 40); */
+            background-image: url(./img_0321/head4.jfif);
+            position: absolute;
+            bottom: 0;
+            right: -230px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 3px solid rgb(50, 50, 50);
+            /* 圖片自動覆蓋全部範圍 */
+            background-size: cover;
+            /* border: 3px solid; */
+        }
+
+        #add {
+            /* background-color: red; */
+            height: 35px;
+            width: 400px;
+
+            position: absolute;
+            bottom: -133px;
+            right: 0px;
+
+        }
+
+        #limit-img {
+            background-color: #0866ff;
+            color: white;
+            width: 16px;
+            height: 16px;
+            font-size: 20px;
+            font-weight: 900;
+            text-align: center;
+            line-height: 23px;
+
+            position: absolute;
+            left: 10px;
+            top: 7px;
+        }
+
+        #limit {
+            background-color: #0866ff;
+            color: white;
+            height: 35px;
+            width: 168px;
+            font-size: 18px;
+            font-weight: 500;
+            text-indent: 30px;
+            line-height: 39px;
+            border-radius: 10px;
+            margin-right: 10px;
+
+            position: absolute;
+            left: 0px;
+            top: 0;
+        }
+
+        #edit {
+            background-color: rgb(92, 92, 92);
+            color: white;
+            font-size: 18px;
+            text-indent: 35px;
+            line-height: 39px;
+            border-radius: 10px;
+
+            position: absolute;
+            left: 178px;
+            top: 0;
+            height: 35px;
+            width: 172px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+
+        #edit-img {
+            background-image: url(./img_0321/pen\ \(1\).png);
+            width: 16px;
+            height: 16px;
+            border-radius: 30%;
+            background-size: cover;
+
+
+            position: absolute;
+            left: 190px;
+            top: 10px;
+        }
+
+        #down {
+            background-color: rgb(92, 92, 92);
+            position: absolute;
+            left: 355px;
+            top: 0;
+            height: 35px;
+            width: 35px;
+            border-radius: 5px;
+        }
+
+        #down-img {
+            background-image: url(./img_0321/many.png);
+            background-position: 1px 55px;
+            background-size: cover;
+            position: absolute;
+            left: 364px;
+            top: 9px;
+            height: 18px;
+            width: 18px;
+            filter: invert();
+        }
+
+        #information {
+            /* background-color: rgba(255, 255, 255, 0.141); */
+            width: 70%;
+            height: 50px;
+            border-top: 2px solid rgb(185, 185, 185);
+
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+        }
+
+        #info-1 {
+            /* background-color: antiquewhite; */
+            color: #0866ff;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+
+            width: 75px;
+            height: 50px;
+            float: left;
+            border-bottom: 5px solid #0866ff;
+        }
+
+        #info-2 {
+            /* background-color: antiquewhite; */
+            color: rgb(183, 183, 183);
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+
+            width: 75px;
+            height: 50px;
+            float: left;
+        }
+
+        #info-3 {
+            /* background-color: antiquewhite; */
+            color: rgb(183, 183, 183);
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+
+            width: 75px;
+            height: 50px;
+            float: left;
+        }
+
+        #info-4 {
+            /* background-color: antiquewhite; */
+            color: rgb(183, 183, 183);
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+
+            width: 75px;
+            height: 50px;
+            float: left;
+        }
+
+        #info-5 {
+            /* background-color: antiquewhite; */
+            color: rgb(183, 183, 183);
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+
+            width: 75px;
+            height: 50px;
+            float: left;
+        }
+
+        #info-6 {
+            /* background-color: antiquewhite; */
+            color: rgb(183, 183, 183);
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+
+            width: 150px;
+            height: 50px;
+            float: left;
+        }
+
+        #info-7 {
+            /* background-color: antiquewhite; */
+            color: rgb(183, 183, 183);
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 50px;
+
+            width: 75px;
+            height: 50px;
+            float: left;
+
+            position: relative;
+        }
+
+        #info-7-img {
+            /* background-color: aqua; */
+            background-image: url(./img_0321/more2.svg);
+            background-size: cover;
+            position: absolute;
+            left: 58px;
+            top: 14px;
+
+            width: 18px;
+            height: 18px;
+            filter: invert();
+        }
+
+        #info-8 {
+            background-color: rgb(92, 92, 92);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+
+            width: 40px;
+            height: 30px;
+            border-radius: 5px;
+            float: right;
+            margin-top: 12px;
+        }
+
+        #all-2 {
+            background-color: rgb(23, 23, 23);
+            width: 100%;
+            height: 2500px;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        #post-self-photo {
+            background-image: url(./img_0321/avatar.jfif);
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-size: cover;
+            margin-left: 15px;
+            float: left;
+        }
+
+        #post-self-text {
+            background-color: rgb(82, 82, 82);
+            height: 50px;
+            width: 80%;
+            float: left;
+            margin-left: 20px;
+            border-radius: 30px;
+
+            font-size: 20px;
+            line-height:50px;
+            color: rgb(188, 188, 188);
+            text-indent: 15px;
+        }
+
+        #post-icon-1{
+            color: white;
+            width: 33%;
+            height: 100%;
+            font-size: 18px;
+            float: left;
+            text-indent: 60px;
+            line-height: 60px;
+            position: relative;
+        }
+        #post-icon-2{
+            color: white;
+            width: 33%;
+            height: 100%;
+            font-size: 18px;
+            float: left;
+            text-indent: 60px;
+            line-height: 60px;
+            position: relative;
+        }
+        #post-icon-3{
+            color: white;
+            width: 33%;
+            height: 100%;
+            font-size: 18px;
+            float: left;
+            text-indent: 60px;
+            line-height: 60px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="nav-left">
+            <div id="fb"></div>
+            <div id="search">
+                <div id="search-img"></div>
+                <div id="search-text"> 搜尋 Facebook</div>
+            </div>
+        </div>
+        <div id="nav-mid">
+            <div id="home"></div>
+            <div id="friend"></div>
+            <div id="video"></div>
+            <div id="market"></div>
+            <div id="club"></div>
+
+        </div>
+        <div id="nav-right">
+            <div id="right-icon-1">
+                <div id="menu"></div>
+            </div>
+            <div id="right-icon-2">
+                <div id="messenger"></div>
+            </div>
+            <div id="right-icon-3">
+                <div id="notify"></div>
+            </div>
+            <div id="right-icon-4">
+                <div id="avatar-more"></div>
+            </div>
+        </div>
+    </div>
+    <div id="all-1">
+        <div id="banner">
+            <div id="avatar">
+                <div id="name">Mr.Duck</div>
+                <div id="follower-num">666位朋友</div>
+                <div id="avatar-camera">
+                    <div id="avatar-camera-photo"></div>
+                    <div id="friend-1">
+                        <div id="friend-etc">...</div>
+                    </div>
+                    <div id="friend-2"></div>
+                    <div id="friend-3"></div>
+                    <div id="friend-4"></div>
+                    <div id="friend-5"></div>
+                    <div id="friend-6">
+                    </div>
+                </div>
+            </div>
+            <div id="edit-photo">編輯封面相片</div>
+            <div id="edit-photo-img"></div>
+            <div id="add">
+                <div id="limit">新增到限時動態</div>
+                <div id="limit-img">+</div>
+                <div id="edit">編輯個人網站</div>
+                <div id="edit-img"></div>
+                <div id="down"></div>
+                <div id="down-img"></div>
+            </div>
+        </div>
+        <div id="information">
+            <div id="info-1">貼文</div>
+            <div id="info-2">關於</div>
+            <div id="info-3">朋友</div>
+            <div id="info-4">相片</div>
+            <div id="info-5">影片</div>
+            <div id="info-6">打卡動態</div>
+            <div id="info-7">更多
+                <div id="info-7-img"></div>
+            </div>
+            <div id="info-8">...</div>
+        </div>
+    </div>
+    <div id="all-2">
+        <div id="main" style="width: 70%;height: 100%;position: relative;margin: auto;">
+            <div id="main-left" style="width: 40%;height: 100%;float: left;">
+                <div id="introduction"
+                    style="width: 100%;height: 400px;background-color: rgb(49, 49, 49);border-radius: 8px;font-size: 25px;font-weight: bold;color: rgb(226, 226, 226);text-indent: 15px;padding: 10px 0;margin-bottom: 20px;">
+                    簡介</div>
+                <div id="photos"
+                    style="width: 100%;height: 400px;background-color: rgb(49, 49, 49);border-radius: 8px;font-size: 25px;font-weight: bold;color: rgb(226, 226, 226);text-indent: 15px;padding: 10px 0;margin-bottom: 20px;">
+                    相片</div>
+                <div id="friends"
+                    style="width: 100%;height: 400px;background-color: rgb(49, 49, 49);border-radius: 8px;font-size: 25px;font-weight: bold;color: rgb(226, 226, 226);text-indent: 15px;padding: 10px 0;">
+                    朋友</div>
+            </div>
+            <div id="main-right" style="width: 59%;height: 100%;;float: right;">
+                <div id="post-self"
+                    style="width: 100%;height: 120px;background-color:rgb(49, 49, 49);border-radius: 8px;margin-bottom: 20px;padding: 15px 0;position: relative;">
+                    <div id="post-self-photo"></div>
+                    <div id="post-self-text">在想些什麼？</div>
+                    <div id="post-bottom" style="width: 90%;height: 60px;border-top: 2px solid rgb(147, 147, 147);position: absolute;bottom: 0;left: 5%;">
+                        <div id="post-icon-1" >直播視訊
+                            <div id="icon-1-img" style="background-image: url(./img_0321/redcamera.png);width: 27px;height: 27px;background-size: cover;position: absolute;left:13% ;top: 26%;"></div>
+                        </div>
+                        <div id="post-icon-2">相片 / 影片
+                            <div id="icon-2-img" style="background-image: url(./img_0321/greencamera.png);width: 27px;height: 27px;background-size: cover;position: absolute;left:13% ;top: 26%;"></div>
+                        </div>
+                        <div id="post-icon-3">生活要事
+                            <div id="icon-3-img" style="background-image: url(./img_0321/flag.png);width: 27px;height: 27px;background-size: cover;position: absolute;left:13% ;top: 26%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="post"
+                    style="width: 100%;height: 180px;background-color:rgb(49, 49, 49);border-radius: 8px;margin-bottom: 20px">
+                </div>
+                <div id="post-1"
+                    style="width: 100%;height: 250px;background-color:rgb(49, 49, 49);border-radius: 8px;margin-bottom: 20px">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
